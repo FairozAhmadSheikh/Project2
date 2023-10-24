@@ -5,7 +5,8 @@
     android:layout_height="140dp"
     android:orientation="horizontal"
     android:background="#ffffff"
-    android:weightSum="6">
+    android:weightSum="6"
+    android:id="@+id/parentviewlayout">
 
     <!--The weight sum property is used to divide the layout into
     different parts and then giving each layout a particular weight
@@ -20,7 +21,7 @@
         android:id="@+id/tourplaceimage"
         android:layout_width="0dp"
         android:layout_height="110dp"
-        android:src="@drawable/arhbal"
+        android:src="@drawable/places"
         android:padding="5dp"
         android:scaleType="centerCrop"
         />

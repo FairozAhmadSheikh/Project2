@@ -1,11 +1,13 @@
 package com.example.navigationapp.fragment
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.navigationapp.R
 import com.example.navigationapp.adapter.DashboardRecyclerAdapter
 import model.Place
+import util.ConnectionManager
 
 class DashboardFragment : Fragment() {
     lateinit var recyclerDashboard:RecyclerView
     lateinit var layoutManager: RecyclerView.LayoutManager
+    lateinit var internetcheckbutton:Button
     val placeslist= arrayListOf<String>("Gulmarg","Pehlgaaam","Aharbal","Sonmarg","Harwan",
         "Nishat","Shalimar","Badamwari","Achbal","Aawreyn")
      lateinit var recyclerAdapter: DashboardRecyclerAdapter
@@ -47,6 +51,43 @@ class DashboardFragment : Fragment() {
         recyclerAdapter= DashboardRecyclerAdapter(activity as Context,tourlistinfo)
         recyclerDashboard.adapter=recyclerAdapter
         recyclerDashboard.layoutManager=layoutManager
+
+
+        //Internet checker goes here
+        internetcheckbutton=view.findViewById(R.id.internetcheckbuttton)
+        internetcheckbutton.setOnClickListener {
+            if (ConnectionManager().checkConnectivity(activity as Context)) {
+                val dialog = AlertDialog.Builder(activity as Context)
+                dialog.setTitle("Success")
+                dialog.setMessage("Internet is Active")
+                dialog.setPositiveButton("OK") { _, _ ->
+                    // Positive button click listener code goes here
+                    // This block will be executed when the user clicks the "OK" button
+                }
+                dialog.setNegativeButton("Cancel") { _, _ ->
+                    // Negative button click listener code goes here
+                    // This block will be executed when the user clicks the "Cancel" button
+                }
+                dialog.create()
+                dialog.show()
+            } else {
+                val dialog = AlertDialog.Builder(activity as Context)
+                dialog.setTitle("Failed")
+                dialog.setMessage("Internet is Not Active")
+                dialog.setPositiveButton("OK") { _, _ ->
+                    // Positive button click listener code goes here
+                    // This block will be executed when the user clicks the "OK" button
+                }
+                dialog.setNegativeButton("Cancel") { _, _ ->
+                    // Negative button click listener code goes here
+                    // This block will be executed when the user clicks the "Cancel" button
+                }
+                dialog.create()
+                dialog.show()
+            }
+        }
+
+
 
         // This adds line after view item completes
         recyclerDashboard.addItemDecoration(DividerItemDecoration(recyclerDashboard.context,(layoutManager as LinearLayoutManager).orientation))

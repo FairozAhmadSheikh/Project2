@@ -19,5 +19,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_below="@id/dashboardtext"/>
-
+<Button
+    android:id="@+id/internetcheckbuttton"
+    android:text="Check internet"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true"/>
 </RelativeLayout>

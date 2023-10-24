@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.navigationapp.R
 import model.Place
@@ -18,6 +20,8 @@ class DashboardRecyclerAdapter(val context: Context, val itemList:ArrayList<Plac
         val rating:TextView=view.findViewById(R.id.txtBookRating)
         val guidename:TextView=view.findViewById(R.id.txtBookAuthor)
         val imagebackground:ImageView=view.findViewById(R.id.tourplaceimage)
+        // Making view item clickable here
+        val parentviewlayout:LinearLayout=view.findViewById(R.id.parentviewlayout)
 
 
     }
@@ -38,5 +42,11 @@ class DashboardRecyclerAdapter(val context: Context, val itemList:ArrayList<Plac
         holder.rating.text=place.tourplacerating
         holder.guidename.text=place.tourguide
         holder.imagebackground.setImageResource(place.tourplaceImage)
+        // setting on click listner in a row
+        holder.parentviewlayout.setOnClickListener{
+            Toast.makeText(context,"Clicked on ${holder.placename.text}",Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 }
