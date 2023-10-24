@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group
+    android:checkableBehavior="single">
+<item
+    android:id="@+id/dashboard"
+    android:title="Dashboard"
+    android:icon="@drawable/dashboard"/>
+
+    <item
+        android:id="@+id/Places"
+        android:title="Places"
+        android:icon="@drawable/places"/>
+    <item
+        android:id="@+id/Rate"
+        android:title="Rate-us"
+        android:icon="@drawable/ratings"/>
+    <item
+        android:id="@+id/login"
+        android:title="Login"
+        android:icon="@drawable/login"/>
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/logout"/>
+    <item
+        android:id="@+id/Contact"
+        android:title="Contact-us"
+        android:icon="@drawable/contactus"/>
+</group>
+</menu>
